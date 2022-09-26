@@ -1,0 +1,41 @@
+
+type Bob implements Person {
+	id: ID!
+	name: String!
+	address: String!
+
+}
+
+type Sara implements Person {
+	id: ID!
+	name: String!
+	address: String!
+}
+
+type George implements Person {
+	id: ID!
+	name: String!
+	address: String!
+}
+
+interface Person {
+	id: ID!
+	address: String!
+}
+
+
+input PersonFilter {
+	id: [ID!]
+	name: StringTermFilter
+	address: StringTermFilter
+}
+
+input StringTermFilter {
+	allofterms: String
+	anyofterms: String
+}
+
+type Query {
+	queryPerson(filter: PersonFilter, first: Int, offset: Int): [Person]
+}
+
